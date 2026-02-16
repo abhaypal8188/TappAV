@@ -1,1 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epson Home Cinema 5050UB - Premium 4K HDR Projector | TappAV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A28;
+            --secondary: #004E89;
+            --dark: #1A1A1D;
+            --dark-lighter: #2C2C30;
+            --light: #F7F7F7;
+            --text-light: #A0A0A8;
+            --success: #00D9A3;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --border-radius: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Header (same as homepage) */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 29, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, var(--secondary), #003566);
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            text-align: center;
+            color: white;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .search-icon, .cart-icon {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .search-icon:hover, .cart-icon:hover {
+            color: var(--primary);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 120px auto 2rem;
+            padding: 0 2rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        /* Product Section */
+        .product-section {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Image Gallery */
+        .product-gallery {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .main-image {
+            background: var(--dark-lighter);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .main-image img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            background: var(--dark-lighter);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--primary);
+        }
+
+        .thumbnail img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Product Details */
+        .product-details {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-badge-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-new {
+            background: var(--primary);
+            color: white;
+        }
+
+        .badge-stock {
+            background: var(--success);
+            color: var(--dark);
+        }
+
+        .product-brand {
+            color: var(--text-light);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .review-count {
+            color: var(--text-light);
+        }
+
+        .product-price-section {
+            background: var(--dark-lighter);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price-main {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1.25rem;
+            margin-right: 1rem;
+        }
+
+        .price-save {
+            background: var(--success);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .emi-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .product-description {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .key-features {
+            background: var(--dark-lighter);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .key-features h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            color: var(--text-light);
+        }
+
+        .feature-text strong {
+            color: var(--light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Purchase Section */
+        .purchase-section {
+            position: sticky;
+            top: 120px;
+            background: var(--dark-lighter);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .variant-selector {
+            margin-bottom: 2rem;
+        }
+
+        .variant-selector h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .variant-options {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .variant-option {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .variant-option:hover, .variant-option.active {
+            border-color: var(--primary);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-selector h4 {
+            font-size: 1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--dark);
+            color: var(--light);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .qty-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--dark);
+            color: var(--light);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--light);
+            margin-bottom: 2rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .trust-badges {
+            display: grid;
+            gap: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .trust-badge-icon {
+            font-size: 1.5rem;
+            color: var(--success);
+        }
+
+        /* Specifications */
+        .specifications {
+            margin-top: 4rem;
+            background: var(--dark-lighter);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-tabs {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .spec-tab {
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .spec-tab:hover, .spec-tab.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .spec-content {
+            display: none;
+        }
+
+        .spec-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .spec-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .spec-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .spec-value {
+            color: var(--text-light);
+        }
+
+        /* Related Products */
+        .related-products {
+            margin-top: 4rem;
+            padding: 4rem 2rem;
+            background: var(--dark-lighter);
+            margin-left: -2rem;
+            margin-right: -2rem;
+        }
+
+        .related-products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--dark);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-image {
+            height: 200px;
+            background: var(--dark-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-card-brand {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product-card-price {
+            font-size: 1.3rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            padding: var(--spacing-lg) 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-gallery {
+                position: static;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .price-main {
+                font-size: 2rem;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .spec-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .main-image {
+                min-height: 300px;
+            }
+
+            .thumbnail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            🎉 New Year Sale: Up to 40% off on select projectors | Free shipping on orders above ₹50,000
+        </div>
+        <nav class="nav-container">
+            <a href="tappav-home.html" class="logo">TappAV</a>
+            <ul class="nav-menu">
+                <li><a href="#projectors">Projectors</a></li>
+                <li><a href="#home-theater">Home Theater</a></li>
+                <li><a href="#audio">Audio</a></li>
+                <li><a href="#accessories">Accessories</a></li>
+                <li><a href="#brands">Brands</a></li>
+            </ul>
+            <div class="nav-actions">
+                <span class="search-icon">🔍</span>
+                <span class="cart-icon">🛒</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="tappav-home.html">Home</a> / <a href="#projectors">Projectors</a> / <a href="#epson">Epson</a> / Home Cinema 5050UB
+    </div>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-container">
+            <!-- Image Gallery -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="mainImage" src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&h=600&fit=crop" alt="Epson Home Cinema 5050UB" />
+                </div>
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&h=600&fit=crop')">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=200&h=200&fit=crop" alt="Front View" />
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&h=600&fit=crop')">
+                        <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=200&h=200&fit=crop" alt="Side View" />
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1615986201152-7686a4867f30?w=800&h=600&fit=crop')">
+                        <img src="https://images.unsplash.com/photo-1615986201152-7686a4867f30?w=200&h=200&fit=crop" alt="In Action" />
+                    </div>
+                    <div class="thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=800&h=600&fit=crop')">
+                        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=200&h=200&fit=crop" alt="Installation" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <div class="product-badge-group">
+                    <span class="badge badge-new">NEW ARRIVAL</span>
+                    <span class="badge badge-stock">✓ In Stock</span>
+                </div>
+
+                <div class="product-brand">EPSON</div>
+                <h1 class="product-title">Home Cinema 5050UB 4K PRO-UHD HDR Projector</h1>
+
+                <div class="product-rating">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="review-count">4.8 / 5 (128 reviews)</span>
+                </div>
+
+                <div class="product-price-section">
+                    <div class="price-main">₹2,49,999</div>
+                    <div>
+                        <span class="price-original">₹2,99,999</span>
+                        <span class="price-save">Save ₹50,000</span>
+                    </div>
+                    <div class="emi-info">
+                        💳 EMI starting at ₹20,833/month | No Cost EMI available
+                    </div>
+                </div>
+
+                <p class="product-description">
+                    Experience cinema-quality visuals in your home with the Epson Home Cinema 5050UB. This flagship 4K PRO-UHD projector features advanced pixel-shifting technology, stunning HDR performance, and Epson's proprietary 15-element precision glass lens for exceptional clarity and edge-to-edge focus uniformity.
+                </p>
+
+                <div class="key-features">
+                    <h3>✨ Key Features</h3>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">📽️</div>
+                            <div class="feature-text">
+                                <strong>4K PRO-UHD Resolution</strong>
+                                Advanced pixel-shifting technology for stunning 4K clarity
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💡</div>
+                            <div class="feature-text">
+                                <strong>2,600 Lumens Brightness</strong>
+                                Exceptional brightness for both color and white output
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎨</div>
+                            <div class="feature-text">
+                                <strong>HDR10 & HLG Support</strong>
+                                True HDR performance with 1,000,000:1 dynamic contrast
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔍</div>
+                            <div class="feature-text">
+                                <strong>Precision Glass Lens</strong>
+                                15-element lens with motorized lens shift (H/V)
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎬</div>
+                            <div class="feature-text">
+                                <strong>3LCD Technology</strong>
+                                100% RGB color signal display with no rainbow effect
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="purchase-section">
+                    <div class="variant-selector">
+                        <h4>Select Warranty</h4>
+                        <div class="variant-options">
+                            <div class="variant-option active">
+                                <span>Standard (3 Years)</span>
+                                <strong>Included</strong>
+                            </div>
+                            <div class="variant-option">
+                                <span>Extended (5 Years)</span>
+                                <strong>+ ₹15,000</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <h4>Quantity:</h4>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                            <input type="number" class="qty-input" value="1" min="1" id="qtyInput" />
+                            <button class="qty-btn" onclick="changeQty(1)">+</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">Add to Cart</button>
+                    <button class="btn btn-secondary">Buy Now</button>
+
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">🚚</div>
+                            <div>Free delivery & professional installation</div>
+                        </div>
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">🛡️</div>
+                            <div>3-year comprehensive warranty</div>
+                        </div>
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">↩️</div>
+                            <div>30-day hassle-free returns</div>
+                        </div>
+                        <div class="trust-badge">
+                            <div class="trust-badge-icon">💬</div>
+                            <div>24/7 expert technical support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications Section -->
+        <div class="specifications">
+            <div class="spec-tabs">
+                <div class="spec-tab active" onclick="showTab('technical')">Technical Specifications</div>
+                <div class="spec-tab" onclick="showTab('features')">Features</div>
+                <div class="spec-tab" onclick="showTab('package')">What's in the Box</div>
+            </div>
+
+            <div id="technical" class="spec-content active">
+                <div class="spec-grid">
+                    <div class="spec-row">
+                        <div class="spec-label">Display Technology</div>
+                        <div class="spec-value">3LCD, 3-chip technology</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Native Resolution</div>
+                        <div class="spec-value">1920 x 1080 (Full HD), 4K Enhancement</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Brightness</div>
+                        <div class="spec-value">2,600 lumens (Color & White)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Contrast Ratio</div>
+                        <div class="spec-value">1,000,000:1 Dynamic Contrast</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Lamp Life</div>
+                        <div class="spec-value">Up to 5,000 hours (Normal) / 6,000 hours (ECO)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Lens Type</div>
+                        <div class="spec-value">15-element precision glass, powered lens shift</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Zoom Ratio</div>
+                        <div class="spec-value">2.1x optical zoom</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Throw Ratio</div>
+                        <div class="spec-value">1.35 - 2.84:1</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">HDR Support</div>
+                        <div class="spec-value">HDR10, HLG</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">HDMI Inputs</div>
+                        <div class="spec-value">2x HDMI 2.0 with HDCP 2.2</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Dimensions</div>
+                        <div class="spec-value">520 x 193 x 449 mm (W x H x D)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Weight</div>
+                        <div class="spec-value">11.2 kg</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="features" class="spec-content">
+                <div class="spec-grid">
+                    <div class="spec-row">
+                        <div class="spec-label">4K Enhancement</div>
+                        <div class="spec-value">Advanced pixel-shifting for 4K PRO-UHD resolution</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">HDR Processing</div>
+                        <div class="spec-value">Full 10-bit HDR color processing with dynamic tone mapping</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Frame Interpolation</div>
+                        <div class="spec-value">Yes, for smooth motion in fast-action scenes</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Lens Memory</div>
+                        <div class="spec-value">10 preset positions for different aspect ratios</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">3D Support</div>
+                        <div class="spec-value">Full HD 3D (RF 3D glasses required, sold separately)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Color Modes</div>
+                        <div class="spec-value">Natural, Cinema, Bright Cinema, Dynamic, Digital Cinema, THX</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Wireless Connectivity</div>
+                        <div class="spec-value">Optional wireless HD transmitter (sold separately)</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Trigger</div>
+                        <div class="spec-value">12V trigger for automated screen/masking control</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="package" class="spec-content">
+                <div class="spec-grid">
+                    <div class="spec-row">
+                        <div class="spec-label">Main Unit</div>
+                        <div class="spec-value">Epson Home Cinema 5050UB Projector</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Remote Control</div>
+                        <div class="spec-value">Backlit remote with batteries</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Power Cable</div>
+                        <div class="spec-value">2.5m AC power cable</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Documentation</div>
+                        <div class="spec-value">Quick setup guide, warranty card, user manual</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Lens Cap</div>
+                        <div class="spec-value">Protective lens cap included</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label">Software</div>
+                        <div class="spec-value">Epson projector management software (download)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products">
+            <div class="related-products-container">
+                <h2 class="section-title">You Might Also Like</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Projector Screen" />
+                        </div>
+                        <div class="product-info">
+                            <div class="product-card-brand">ELITE SCREENS</div>
+                            <h3 class="product-card-title">120" Fixed Frame Screen</h3>
+                            <div class="product-card-price">₹45,999</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1545127398-14699f92334b?w=400&h=300&fit=crop" alt="Soundbar" />
+                        </div>
+                        <div class="product-info">
+                            <div class="product-card-brand">SONY</div>
+                            <h3 class="product-card-title">HT-A7000 Dolby Atmos</h3>
+                            <div class="product-card-price">₹1,29,990</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1590225438863-5e114755a793?w=400&h=300&fit=crop" alt="AV Receiver" />
+                        </div>
+                        <div class="product-info">
+                            <div class="product-card-brand">DENON</div>
+                            <h3 class="product-card-title">AVR-X4800H Receiver</h3>
+                            <div class="product-card-price">₹1,99,990</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=300&fit=crop" alt="Cables" />
+                        </div>
+                        <div class="product-info">
+                            <div class="product-card-brand">AUDIOQUEST</div>
+                            <h3 class="product-card-title">Pearl HDMI 2.1 Cable</h3>
+                            <div class="product-card-price">₹8,999</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 TappAV. All rights reserved. | Authorized Epson Dealer</p>
+        </div>
+    </footer>
+
+    <script>
+        // Image Gallery
+        function changeImage(thumbnail, imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Quantity Controls
+        function changeQty(delta) {
+            const input = document.getElementById('qtyInput');
+            let value = parseInt(input.value) || 1;
+            value = Math.max(1, value + delta);
+            input.value = value;
+        }
+
+        // Specification Tabs
+        function showTab(tabName) {
+            document.querySelectorAll('.spec-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.spec-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Variant Selection
+        document.querySelectorAll('.variant-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.variant-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
